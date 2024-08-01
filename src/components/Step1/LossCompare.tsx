@@ -18,7 +18,7 @@ const StyledTable = styled.table`
   box-sizing: border-box;
   text-indent: initial;
   unicode-bidi: isolate;
-  border-color: gray;
+  border-color: #ffffff80;
   border-collapse: initial;
   border-spacing: 3px 0;
   width: 100%;
@@ -29,7 +29,7 @@ const StyledTable = styled.table`
   width: 100%;
 
   & td {
-    border: 1px solid gray;
+    border: 1px solid #ffffff80;
     padding: 0;
     width: 18%;
     font-size: 15px;
@@ -149,7 +149,7 @@ const StyledTBody = styled.tbody`
 `;
 
 const StyledTitle = styled(OswaldTitle)`
-  font-size: 30px;
+  font-size: 50px;
   font-weight: bold;
 
   @media only screen and (max-width: 850px) {
