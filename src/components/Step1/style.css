@@ -1,0 +1,100 @@
+.table-blue {
+  background-color: #3ea745 !important;
+  color: #fff !important;
+}
+
+.table-blue span {
+  background-color: #3ea745 !important;
+  color: #fff !important;
+}
+
+.table-title {
+  background: #f1c61a !important;
+  font-size: 18px !important;
+  line-height: 35px;
+  padding-left: 20px !important;
+  text-align: left;
+
+  @media only screen and (max-width: 850px) {
+    font-size: 15px !important;
+    line-height: 15px;
+    padding-left: 15px !important;
+  }
+}
+
+.table-product td {
+  font-size: 16px;
+  text-align: center;
+}
+
+.table-line td {
+  background: #ededed;
+}
+
+.table-product td img {
+  display: block;
+  margin: 4px auto 0;
+}
+
+.table-line__last {
+  background: #fff !important;
+  border-bottom: none !important;
+  text-align: left;
+  border: none !important;
+}
+
+.table-line__last span {
+  font-size: 18px;
+  padding-left: 20px !important;
+  @media only screen and (max-width: 850px) {
+    font-size: 15px;
+  }
+}
+
+.compare-table tr:first-child span {
+  color: #000;
+  display: block;
+  font-size: 22px;
+  line-height: 27px;
+  margin: -3px 0 6px;
+}
+
+.compare-table tr:first-child .table-blue span {
+  letter-spacing: -.02em;
+  padding-top: 5px;
+}
+
+.compare-table tr:first-child td:first-child {
+  width: 30%;
+}
+
+.bottom-img {
+  position: relative;
+  margin: 12px auto 10px;
+  z-index: 3;
+  
+  @media only screen and (max-width: 850px) {
+    margin: 2px auto 0;
+    width: 38px !important;
+  }
+}
+
+.how-bg {
+  background: url(../../assets/images/howwork.jpg) no-repeat center center !important;
+  background-size: 100%;
+  margin-bottom: -20px;
+  position: relative;
+  z-index: 2;
+}
+
+.table-product span {
+  @media only screen and (max-width: 850px) {
+    display: none !important;
+  }
+}
+
+.table-product td:nth-child(4) {
+  @media only screen and (max-width: 850px) {
+    display: none;
+  }
+}

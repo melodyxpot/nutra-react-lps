@@ -1,0 +1,78 @@
+.your_order {
+  font-size: 26px;
+}
+
+@media (max-width:767px) {
+  .custom-image {
+    display: block;
+    max-width: 44%;
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+
+/*  */
+
+.thank_you_sec .your_order {
+  font-family: Oswald, sans-serif;
+  font-size: 2.5rem;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.thank_you_sec .we_are {
+  font-family: Oswald, sans-serif;
+  font-size: 2rem;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.thank_you_sec .order_sum {
+  font-family: Oswald, sans-serif;
+  font-size: 1.5rem;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.product_name span {
+  float: right;
+}
+
+.soc-list {
+  margin: 20px auto !important;
+}
+
+.service_support p {
+  margin-bottom: 0px;
+  padding: 15px 15px;
+  background-color: #0080003d;
+  border-radius: 5px;
+  margin: 15px 0px;
+}
+
+.footer_strips_row {
+  margin: auto;
+  background-color: #000000b8;
+  border-radius: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .footer_strips_row {
+    border-radius: 20px;
+    padding: 15px 50px;
+    margin-bottom: 50px;
+  }
+
+  .footer_strips_row h2 {
+    text-transform: uppercase;
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+  }
+
+  .footer_strips img {
+    border-radius: 10px;
+    height: 50px;
+    object-fit: contain;
+  }
+}
