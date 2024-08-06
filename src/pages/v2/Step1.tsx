@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { FloatingContainer,Btn } from "../../style";
 import { useDeviceType } from "../../context/DeviceContext";
 import { Notification } from "../../components/generic/Notification";
-import { HeaderComponent, Main,HowToUse,Magazine,Science,Stories,LastSaction,OrderForm } from "../../components/Step1";
+import {HeaderComponent, Main,HowToUse,Magazine,Science,Stories,LastSaction,OrderForm, LossCompare } from "../../components/Step1";
+import HowDoesItWork from "../../components/Step1/HowDoesItWork";
 
 
 
@@ -49,8 +50,10 @@ export const Step1Page = () => {
   <>
   <HeaderComponent/>
   <Main ref={formSectionRef}/>
+  <HowDoesItWork />
   <Magazine/>
   <HowToUse/>
+  <LossCompare />
   <Science/>
   <Stories/>
   <LastSaction onClick={onClick}/>

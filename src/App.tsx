@@ -4,6 +4,7 @@ import { DeviceProvider } from './context/DeviceContext';
 import { LoaderProvider } from './context/LoaderContext';
 import { V1Routes } from './pages/v1/v1routes';
 import { Step1Page } from './pages/v1/Step1';
+import { Step1Page as Step1PageV2 } from './pages/v2/Step1';
 import { CheckoutPage } from './pages/v1/Checkout';
 import { MainPage } from './pages';
 import ThankUPage from './pages/v1/ThankU';
@@ -14,6 +15,7 @@ import ReactGA from 'react-ga4';
 import { useEffect, useLayoutEffect } from 'react';
 import { MarketingProvider } from './context/MarketingContext';
 import { ClientProvider } from './context/ClientContext';
+import { V2Routes } from './pages/v2/v2routes';
 
 ReactGA.initialize('G-PDH3S7YJL5');
 
@@ -62,6 +64,9 @@ function App() {
                     <Route path={V1Routes.step1} element={<Step1Page />} />
                     <Route path={V1Routes.checkout} element={<CheckoutPage />} />
                     <Route path={V1Routes.thankYou} element={<ThankUPage />} />
+
+                    <Route path={V2Routes.step1} element={<Step1PageV2 />} />
+
                   </Routes>
 
                 </Wrapper>
