@@ -109,6 +109,16 @@ const StyledTBody = styled.tbody`
   box-sizing: border-box;
   margin: 0;
 
+  & tr:first-child td {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  & tr:first-child img {
+    display: block;
+    margin: 4px auto 0;
+  }
+
   @media only screen and (max-width: 850px) {
     font-size: 15px !important;
   
