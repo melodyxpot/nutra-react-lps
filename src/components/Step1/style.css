@@ -8,20 +8,6 @@
   color: #fff !important;
 }
 
-.table-title {
-  background: #f1c61a !important;
-  font-size: 18px !important;
-  line-height: 35px;
-  padding-left: 20px !important;
-  text-align: left;
-
-  @media only screen and (max-width: 850px) {
-    font-size: 15px !important;
-    line-height: 15px;
-    padding-left: 15px !important;
-  }
-}
-
 .table-product td {
   font-size: 16px;
   text-align: center;

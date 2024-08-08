@@ -1,41 +1,55 @@
-import { useState } from "react";
-import { Box, Row,SegoeP,Color } from "../../style"
+import { useEffect, useState } from "react";
+import { Box, SegoeP,Color } from "../../style"
 import styled from "styled-components"
 
 
 
 const date = new Date().toDateString()
-export const NavBox = ()=>{
+
+interface Props {
+  active?: number
+}
+
+export const NavBox = ({ active = 2 }: Props)=>{
     const [activeTab, setActiveTab] = useState<number>(2);
+
+    useEffect(() => {
+      setActiveTab(active)
+    }, [active])
 
     return (
         <Box $background="#fff" gap="0px">
-            
-            <TabHeaders>
+          <TabHeaders>
             <TabHeader
                 key={1}
-                $isActive={false}
-                onClick={() => setActiveTab(1)}
+                $isActive={activeTab === 1}
+                // onClick={() => setActiveTab(1)}
             >
-                1. Shipping Info
+                1.Qualify
             </TabHeader>
             <TabHeader
-            key={2}
-            $isActive={true}
-            onClick={() => setActiveTab(2)}
-          >
-            2. Select Package
-          </TabHeader>
-          <TabHeader
-            key={3}
-            $isActive={false}
-            onClick={() => setActiveTab(3)}
-          >
-            3. Summary
-          </TabHeader>
-      </TabHeaders>
+              key={2}
+              $isActive={activeTab === 2}
+              // onClick={() => setActiveTab(2)}
+            >
+             2. Select Package
+            </TabHeader>
+            <TabHeader
+              key={3}
+              $isActive={activeTab === 3}
+              // onClick={() => setActiveTab(3)}
+            >
+              3. Summary
+            </TabHeader>
+          </TabHeaders>
 
-            
+          {activeTab === 1 && <>
+            <SegoeP weight={700} $fontSize="14px" $lineHeight="16px" style={{ textAlign: "center" }}>
+              SEE IF YOU QUALIFY FOR OUR SPECIAL OFFER BY FILLING OUT THE FORM BELOW
+            </SegoeP>
+          </>}
+
+          {activeTab === 2 && <>
             <SegoeP weight={700} $fontSize="14px" $lineHeight="16px"><Color color="#661997">APPROVED!</Color> Free Bottle Packages Confirmed</SegoeP>
             <SegoeP margin="3px 0px" $fontSize="14px" $lineHeight="16px">Limited supply available as of <Color color="#fc0303">{date}</Color> We currently have product <b>in stock</b> and ready to ship within 24 hours.</SegoeP>
             {
@@ -47,8 +61,8 @@ export const NavBox = ()=>{
               </>
             }
             <SegoeP margin="3px 0px" $fontSize="14px" $lineHeight="16px">Sell Out Risk: <Color color="#fc0303">HIGH</Color></SegoeP>
-            
-
+          </>} 
+          
         </Box>
     )
 }

@@ -156,6 +156,20 @@ const StyledTBody = styled.tbody`
       background: transparent !important;
     }
   }
+
+  & .table-title {
+    background: #f1c61a !important;
+    font-size: 18px !important;
+    line-height: 35px;
+    padding-left: 20px !important;
+    text-align: left;
+
+    @media only screen and (max-width: 850px) {
+      font-size: 15px !important;
+      line-height: 15px;
+      padding-left: 15px !important;
+    }
+  }
 `;
 
 const StyledTitle = styled(OswaldTitle)`

@@ -6,6 +6,7 @@ import { useDeviceType } from "../../context/DeviceContext";
 import { Notification } from "../../components/generic/Notification";
 import {HeaderComponent, Main,HowToUse,Magazine,Science,Stories,LastSaction,OrderForm, LossCompare } from "../../components/Step1";
 import HowDoesItWork from "../../components/Step1/HowDoesItWork";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -14,10 +15,14 @@ export const Step1Page = () => {
   const formSectionRef = useRef<HTMLDivElement | null>(null)
   const {isMobile} = useDeviceType()
   const [isButtonVisible, setIsButtonVisible] = useState(true);
-  
+  const navigate = useNavigate();
 
   const onClick = ()=>{
-    formSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (isMobile) {
+      navigate("/v2/qualify");
+    } else {
+      formSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   useEffect(() => {
@@ -57,10 +62,6 @@ export const Step1Page = () => {
   <Science/>
   <Stories/>
   <LastSaction onClick={onClick}/>
-  {
-    isMobile &&
-    <OrderForm ref={formSectionRef}/>
-  }
   
   {
     isButtonVisible  &&

@@ -16,6 +16,7 @@ import { useEffect, useLayoutEffect } from 'react';
 import { MarketingProvider } from './context/MarketingContext';
 import { ClientProvider } from './context/ClientContext';
 import { V2Routes } from './pages/v2/v2routes';
+import Qualify from './pages/v2/Qualify';
 
 ReactGA.initialize('G-PDH3S7YJL5');
 
@@ -66,6 +67,9 @@ function App() {
                     <Route path={V1Routes.thankYou} element={<ThankUPage />} />
 
                     <Route path={V2Routes.step1} element={<Step1PageV2 />} />
+                    <Route path={V2Routes.checkout} element={<Step1PageV2 />} />
+                    <Route path={V2Routes.thankYou} element={<CheckoutPage />} />
+                    <Route path={V2Routes.qualify} element={<Qualify />} />
 
                   </Routes>
 
