@@ -33,35 +33,20 @@ export const CheckoutPage = () => {
      <Col $maxWidth={isMobile?"100%":"65%"}>
         <Box $noBorder={true}>
           <WrappedRow justify="space-between" className="wr" $gap="0">
-
-          
-          
           <Col $maxWidth={isMobile?"100%":"30%"}>
           <Img src={slimmyGummyLogo} width={"150px"}/>
           </Col>
           <Col $maxWidth={isMobile?"35%":"30%"}>
           <Img src={caIcon} width={"150px"}/>
           </Col>
-          
-            
             <Col $maxWidth={isMobile?"50%":"30%"}>
             <SegoeP $lineHeight="16px" margin="0" $fontSize="14px" weight={500}>Internet Exclusive Offers Available to {process.env.REACT_APP_MARKET} Residents Only</SegoeP>
             </Col>
-            
-
             </WrappedRow>
         </Box>
-
-
       </Col>
       <Col $maxWidth="30%">
       </Col>
-
-     
-      
-
-      
-      
     </Container>
 
     <Container $alignItems="start" $maxWidth="950px" padding="0" $gap="15px">

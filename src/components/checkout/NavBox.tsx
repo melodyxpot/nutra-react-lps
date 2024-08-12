@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Box, SegoeP,Color } from "../../style"
 import styled from "styled-components"
-
-
+import ArrowActiveImg from "../../assets/images/arrow-active.png";
+import ArrowRightImg from "../../assets/images/arrow-right.png";
+import ArrowBottomImg from "../../assets/images/arrow-bottom.png";
 
 const date = new Date().toDateString()
 
@@ -21,25 +22,25 @@ export const NavBox = ({ active = 2 }: Props)=>{
         <Box $background="#fff" gap="0px">
           <TabHeaders>
             <TabHeader
-                key={1}
-                $isActive={activeTab === 1}
-                // onClick={() => setActiveTab(1)}
+              key={1}
+              $isActive={activeTab === 1}
             >
-                1.Qualify
+              Qualify
+              <span>{active === 1 ? "" : "1"}</span>
             </TabHeader>
             <TabHeader
               key={2}
               $isActive={activeTab === 2}
-              // onClick={() => setActiveTab(2)}
             >
-             2. Select Package
+             Select Package
+             <span>{active === 2 ? "" : "2"}</span>
             </TabHeader>
             <TabHeader
               key={3}
               $isActive={activeTab === 3}
-              // onClick={() => setActiveTab(3)}
             >
-              3. Summary
+              Summary
+              <span>{active === 3 ? "" : "3"}</span>
             </TabHeader>
           </TabHeaders>
 
@@ -78,11 +79,36 @@ const TabHeaders = styled.div`
 `;
 
 const TabHeader = styled.div<{ $isActive: boolean }>`
-  padding: 5px 10px;
+  /* padding: 5px 10px;
   width: 100%;
   font-size: 12px;
   justify-content: center;
   text-align: center;
   background-color: ${(props) => (props.$isActive ? '#fd6f03' : '#ebebeb')};
+   */
   color: ${(props) => (props.$isActive ? '#fff' : '#000')};
+  background: url(${(props) => props.$isActive ? ArrowActiveImg : ArrowRightImg}) 50%;
+  background-size: 100% 100%;
+  margin: 0 -4px;
+  padding-left: 5px;
+  position: relative;
+  text-align: center;
+  width: calc(33.333% + 3px);
+  font-size: 12px;
+
+  & span {
+    background: ${(props) => props.$isActive ? `url(${ArrowBottomImg}) no-repeat` : `#676873`};
+    border-radius: 50%;
+    color: #fafafc;
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 400;
+    height: 14px;
+    line-height: 14px;
+    margin-left: 5px;
+    margin-top: -1px;
+    text-align: center;
+    vertical-align: middle;
+    width: 14px;
+  }
 `;
