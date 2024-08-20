@@ -6,6 +6,7 @@ import { V1Routes } from './pages/v1/v1routes';
 import { Step1Page } from './pages/v1/Step1';
 import { Step1Page as Step1PageV2 } from './pages/v2/Step1';
 import { CheckoutPage } from './pages/v1/Checkout';
+import { CheckoutPage as CheckoutPageV2 } from './pages/v2/Checkout';
 import { MainPage } from './pages';
 import ThankUPage from './pages/v1/ThankU';
 import { CampaignProvider } from './context/CampaignContext';
@@ -68,7 +69,7 @@ function App() {
 
                     <Route path={V2Routes.step1} element={<Step1PageV2 />} />
                     <Route path={V2Routes.checkout} element={<Step1PageV2 />} />
-                    <Route path={V2Routes.thankYou} element={<CheckoutPage />} />
+                    <Route path={V2Routes.thankYou} element={<CheckoutPageV2 />} />
                     <Route path={V2Routes.qualify} element={<Qualify />} />
 
                   </Routes>

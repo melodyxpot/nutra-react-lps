@@ -53,99 +53,88 @@ export const Offer = ({campaignProduct,currency,index,currentIndex,onSelect}:Off
         <OfferBox $background="#fff">
           <Row justify="flex-start">
             <Head>
-            <Col $maxWidth="50%" align="start" margin="8px 0px">
-              <SegoeP $lineHeight="16px" color="#fff" $fontSize={isMobile?"12px":"27px"} weight={700}>BUY {paid} GET {free} FREE*</SegoeP></Col>
-            <Col  $maxWidth="30%" align="start">
-              
-              <SegoeP $lineHeight="16px" color="#fff" margin="0px" $fontSize="12px" weight={400}>Retail:</SegoeP>
-              <SegoeP $lineHeight="16px" color="#fff" margin="0px" $fontSize="12px" weight={400}>{currency}{retailPrice} / Bottle</SegoeP>
-              
-            </Col>
-            <FlexContainer/>
-            <Col $maxWidth="25%" background="#f704b6">
-            <Row background="#f704b6" justify="flex-start" gap={"10px"}>
-            
-              <Col align="start" $maxWidth="20%"  >
-                <Img src={Icons.box}  width={"20px"}/>
+              <Col $maxWidth="50%" align="start" margin="8px 0px">
+                <SegoeP $lineHeight="16px" color="#2956c2" $fontSize={isMobile?"12px":"27px"} weight={700}>BUY {paid} GET {free} FREE*</SegoeP></Col>
+              <Col  $maxWidth="28%" align="start">
+                
+                <SegoeP $lineHeight="16px" color="#000000" margin="0px" $fontSize="12px" weight={700}>Retail:</SegoeP>
+                <SegoeP $lineHeight="16px" color="#000000" margin="0px" $fontSize="12px" weight={700}>{currency}{retailPrice} / Bottle</SegoeP>
+                
               </Col>
-
-              <Col align="start"  >
-                <SegoeP $lineHeight="16px" color="#fff" $fontSize="18px" weight={400}>FREE {isMobile?"":"SHIPPING"}</SegoeP>
+              <FlexContainer/>
+              <Col $maxWidth="25%" background="#2956c2">
+                <Row background="#2956c2" justify="flex-start" gap={"10px"}>
+                  <Col align="start" $maxWidth="20%"  >
+                    <Img src={Icons.box}  width={"20px"}/>
+                  </Col>
+                  <Col align="start"  >
+                    <SegoeP $lineHeight="16px" color="#fff" $fontSize="18px" weight={400} style={{ fontStyle: isSelected ? "italic" : "normal", fontWeight: "bold" }} >FREE {isMobile?"":"SHIPPING"}</SegoeP>
+                  </Col>
+                </Row>
               </Col>
-
-            </Row>
-            </Col>
-            
-            
-
             </Head>
-          
-            
           </Row>
           {
             isMobile && 
-            <Row justify="space-between"  padding="0px 5px" background={isSelected?"#fdfbe2":"transparent"}>
+            <Row justify="space-between"  padding="0px 5px" background="transparent">
               <Col align="start" $maxWidth="22px" margin="5px">
-              <BlueCircle onClick={clicked} $isMobile={isMobile}>
-                {
-                  isSelected && 
-                  <ImgV src={Vicon} width={"22px"} height={"22px"}/>
-                }
-                
+                <BlueCircle onClick={clicked} $isMobile={isMobile}>
+                  {
+                    isSelected && 
+                    <ImgV src={Vicon} width={"22px"} height={"22px"}/>
+                  }
                </BlueCircle>
               </Col>
-              <Col>
-              <SegoeP $lineHeight="16px" margin="0" color="#f704b6" weight={700} $fontSize="12px">For Those Who Need to Lose {qty*5}+ Pounds!</SegoeP>
-              </Col>
+              <RightCol>
+                <SegoeP $lineHeight="16px" margin="0" color="#2956c2" weight={700} $fontSize="12px">For Those Who Need to Lose {qty*5}+ Pounds!</SegoeP>
+              </RightCol>
             </Row>
           }
-          <Row justify="space-between" gap="10px"  padding="0px 5px" background={isSelected?"#fdfbe2":"transparent"}>
+          <Row justify="space-between" gap="10px"  padding="0px 5px" background="transparent">
             
             <Col $maxWidth="70%" justify="center">
-            <Row className="rowd" justify="flex-start" gap="15px">
-              {
-                !isMobile &&
-                <Col justify="center" $maxWidth="20%">
-               <BlueCircle onClick={clicked} $isMobile={isMobile}>
+              <Row className="rowd" justify="flex-start" gap="15px">
                 {
-                  isSelected && 
-                  <ImgV src={Vicon} width={isMobile?"22px":"58px"} height={isMobile?"22px":"58px"}/>
+                  !isMobile &&
+                  <Col justify="center" $maxWidth="20%">
+                <BlueCircle onClick={clicked} $isMobile={isMobile}>
+                  {
+                    isSelected && 
+                    <ImgV src={Vicon} width={isMobile?"22px":"58px"} height={isMobile?"22px":"58px"}/>
+                  }
+                  
+                </BlueCircle>
+                </Col>
                 }
                 
-               </BlueCircle>
-              </Col>
-              }
-              
-      
-              <Col justify="center" $maxWidth="60%">
-              <Bottles qty={paid} free={free}/>
-              </Col>        
+        
+                <Col justify="center" $maxWidth="60%">
+                <Bottles qty={paid} free={free}/>
+                </Col>        
 
-              <Col justify="center" $maxWidth="20%">
-                <Save size={isMobile?50:78}>
-                  <SegoeP $lineHeight="16px" $fontSize={isMobile?"14px":"16px"} direction="center" weight={700}>{free?`GET ${free} FREE`:''}</SegoeP>
-                </Save>
-              </Col>
+                <Col justify="center" $maxWidth="20%">
+                  <Save size={isMobile?50:78}>
+                    <SegoeP $lineHeight="16px" $fontSize={isMobile?"14px":"16px"} direction="center" weight={700}>{free?`GET ${free} FREE`:''}</SegoeP>
+                  </Save>
+                </Col>
 
-            </Row>
-              
-              
+              </Row>
             </Col>
             
-            <Col $maxWidth="30%" justify="center" gap="10px" margin="10px 5px">
+            <RightCol $maxWidth="28%" justify="center" gap="10px" margin="10px 5px">
             {!isMobile &&
-              <SegoeP $lineHeight="16px" margin="0" color="#f704b6" weight={700} $fontSize="16px">For Those Who Need to Lose {qty*5}+ Pounds!</SegoeP>
+              <SegoeP $lineHeight="16px" margin="0" color="#2956c2" weight={700} $fontSize="16px">For Those Who Need to Lose {qty*5}+ Pounds!</SegoeP>
             }
             
             <SegoeP $lineHeight="16px" margin="0" $fontSize="14px">Same as</SegoeP>
-            <SegoeP $lineHeight="16px" margin="0" $fontSize={isMobile?"18px":"42px"}>{currency}{bottlePrice}<Small>/Bottle</Small></SegoeP>
+            <SegoeP $lineHeight="16px" margin="0" $fontSize={isMobile?"18px":"42px"} style={{ fontWeight: "bold", color: isSelected? "#3dc051" : "#1c1c28" }}>{currency}{bottlePrice}<Small>/Bottle</Small></SegoeP>
             {
               !isMobile && 
               <SelectBtn $backgroundColor1="#fc6806" $fontSize={17} $fontWeight={400} width="80%" onClick={clicked}>{isSelected?"Selected!":selectText}</SelectBtn>
 
             }
             
-            </Col>
+            </RightCol>
           </Row>
           {
             isMobile && 
@@ -153,9 +142,6 @@ export const Offer = ({campaignProduct,currency,index,currentIndex,onSelect}:Off
               <SelectBtn $backgroundColor1="#fc6806" width="100%" $fontSize={17} $fontWeight={400} onClick={clicked}>{isSelected?"Selected!":selectText}</SelectBtn>
             </Row>
           }
-          
-         
-
         </OfferBox>
     )
 }
@@ -232,7 +218,7 @@ const FlexContainer = styled.div`
   justify-content: center;
   max-width: 10%;
   width:60px;
-  background: linear-gradient(to bottom right, #7ec304 50%, #f704b6 50%);
+  background: linear-gradient(to bottom right, #ffffff 50%, #2956c2 50%);
 `;
 
 
@@ -270,9 +256,24 @@ const Head = styled.div<{justify?:'center' | 'flex-start' | 'flex-end' |'space-b
   width: 100%;
   justify-content:${props => props.justify || 'center'};
   border-radius: 5px 5px 0px 0px;
-  background:#7ec304;
+  background: #fff;
   padding-left:10px;
+  border-bottom: 1px solid #ccc;
   box-sizing: border-box;
   /* flex-wrap: wrap; */
-  
 `;
+
+const RightCol = styled(Col)`
+  // position: relative;
+
+  // &::before {
+  //   background: #ddd;
+  //   content: "";
+  //   display: block;
+  //   height: 140px;
+  //   left: -7px;
+  //   position: absolute;
+  //   top: 0;
+  //   width: 2px;
+  // }
+`

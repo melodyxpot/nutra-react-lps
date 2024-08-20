@@ -10,6 +10,7 @@ import { FieldType, TextFieldType } from "../fields"
 import Joi from "joi"
 import { forwardRef, Ref, useEffect, useRef, useState } from "react"
 import { V1Routes } from "../../pages/v1/v1routes"
+import { V2Routes } from "../../pages/v2/v2routes"
 import { Section } from "../../style"
 import { DiagonalLine } from "../generic/DiagonalLine"
 import states from 'states-us';
@@ -180,10 +181,10 @@ export const OrderForm = forwardRef<HTMLDivElement>((props, ref) => {
         if (serverRes?.campaign && serverRes.order) {
             setCampaign(serverRes.campaign)
             setOrder(serverRes.order)
+            console.log('[serverRes]', serverRes)
             navigate(V1Routes.checkout)
+            // navigate(V2Routes.checkout)
         }
-
-
 
     }, [serverRes]);
 
