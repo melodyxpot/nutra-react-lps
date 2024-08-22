@@ -19,8 +19,8 @@ export const NavBox = ({ active = 2 }: Props)=>{
     }, [active])
 
     return (
-        <Box $background="#fff" gap="0px">
-          <TabHeaders>
+        <Box $background="#fff" gap="0px" style={{ borderRadius: "20px", display: "flex", justifyContent: "center", padding: "10px" }}>
+          <TabHeaders style={{ maxWidth: "400px", margin: "auto", marginBottom: "20px" }}>
             <TabHeader
               key={1}
               $isActive={activeTab === 1}
@@ -51,19 +51,18 @@ export const NavBox = ({ active = 2 }: Props)=>{
           </>}
 
           {activeTab === 2 && <>
-            <SegoeP weight={700} $fontSize="14px" $lineHeight="16px"><Color color="#661997">APPROVED!</Color> Free Bottle Packages Confirmed</SegoeP>
+            <SegoeP weight={700} $fontSize="14px" $lineHeight="16px" style={{ textAlign: "center" }}><Color color="#661997">APPROVED!</Color> Free Bottle Packages Confirmed</SegoeP>
             <SegoeP margin="3px 0px" $fontSize="14px" $lineHeight="16px">Limited supply available as of <Color color="#fc0303">{date}</Color> We currently have product <b>in stock</b> and ready to ship within 24 hours.</SegoeP>
             {
               process.env.REACT_APP_SUBSCRIBE_NOTIFICATION==="yes" &&
               <>
-              <SegoeP margin="3px 0px" $fontSize="12px" $lineHeight="16px">To ensure fair access for all customers, please limit your purchase to one package of BioKetix gummies per person.</SegoeP>
-            <SegoeP margin="3px 0px" $fontSize="12px" $lineHeight="16px">This unique offer is exclusive to our BioKetix journey and sold as a subscription. It can be canceled, pause or changed at any time.</SegoeP>
-            <SegoeP margin="3px 0px" $fontSize="12px" $lineHeight="16px">I am aware of the importance of using the advanced formula ACV gummies responsibly as part of the BioKetix journey for effective weight management.</SegoeP>
+                <SegoeP margin="3px 0px" $fontSize="12px" $lineHeight="16px">To ensure fair access for all customers, please limit your purchase to one package of BioKetix gummies per person.</SegoeP>
+                <SegoeP margin="3px 0px" $fontSize="12px" $lineHeight="16px">This unique offer is exclusive to our BioKetix journey and sold as a subscription. It can be canceled, pause or changed at any time.</SegoeP>
+                <SegoeP margin="3px 0px" $fontSize="12px" $lineHeight="16px">I am aware of the importance of using the advanced formula ACV gummies responsibly as part of the BioKetix journey for effective weight management.</SegoeP>
               </>
             }
             <SegoeP margin="3px 0px" $fontSize="14px" $lineHeight="16px">Sell Out Risk: <Color color="#fc0303">HIGH</Color></SegoeP>
-          </>} 
-          
+          </>}
         </Box>
     )
 }

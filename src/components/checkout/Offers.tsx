@@ -21,20 +21,18 @@ export const Offers = ({currentIndex,onSelect}:OffersProps)=>{
   
     return (
       <>
-        <Box $background="#fff">
+        <Box $background="#fff" $noBorder style={{ padding: "0" }}>
           {
             campaign?.products.map(
               (product,index)=>(
                 <Offer
-                key={index}
-            campaignProduct={product}
-            currency={campaign?.currencySymbol || "E"}
-            onSelect={onSelect}
-            index={index}
-            currentIndex={currentIndex}
-            
-          />
-
+                  key={index}
+                  campaignProduct={product}
+                  currency={campaign?.currencySymbol || "E"}
+                  onSelect={onSelect}
+                  index={index}
+                  currentIndex={currentIndex}
+                />
               )
             )
           }
@@ -42,18 +40,14 @@ export const Offers = ({currentIndex,onSelect}:OffersProps)=>{
           <Row>
             <SecImg
               src={SecureIcons}
-              width={isMobile?"400px":"600px"}
+              width={isMobile ? "400px" : "600px"}
             />
           </Row>
           <Row>
           <OfferBox $background="#fff">
           <Col justify="flex-start">
             <Head>
-            <Col  align="center"><SegoeP $lineHeight="16px" color="#fff" $fontSize={isMobile?"17px":"27px"} margin="10px" weight={700}>30 DAY MONEY BACK GUARANTEE</SegoeP></Col>
-            
-            
-            
-
+              <Col align="center"><SegoeP $lineHeight="16px" color="#fff" $fontSize={isMobile?"17px":"27px"} margin="10px" weight={700}>30 DAY MONEY BACK GUARANTEE</SegoeP></Col>
             </Head>
             <WrappedRow $reverse={true} $gap="0">
               <Col $maxWidth={isMobile?"100%":"20%"}>
@@ -63,8 +57,6 @@ export const Offers = ({currentIndex,onSelect}:OffersProps)=>{
                 <SegoeP margin="10px" $lineHeight={"22px"} $fontSize="15px">We are so confident in our products and services, that we back it with a 30 day money back guarantee. If for any reason you are not fully satisfied with our products, simply return the purchased products in the original container within 30 days of when you received your order. We will refund you 100% of the purchase price - with absolutely no hassle.</SegoeP>
               </Col>
             </WrappedRow>
-          
-            
           </Col>
 
           </OfferBox>
@@ -88,23 +80,22 @@ const SecImg = styled.img<{margin?:string}>`
   clip-path: polygon(10% 0, 90% 0, 90% 100%, 10% 100%);
 `;
 
-const OfferBox = styled.div<{$noBorder?:boolean, $background?:string}>`
-display: flex;
-flex-direction: column;
-background: #fff;
-width: 100%;
-box-sizing: border-box;
-border: 1px solid #ccc;
-border-radius: 5px;
+const OfferBox = styled.div<{ $noBorder?:boolean, $background?:string }>`
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 20px;
 `
-const Head = styled.div<{justify?:'center' | 'flex-start' | 'flex-end' |'space-between'}>`
+const Head = styled.div<{ justify?:'center' | 'flex-start' | 'flex-end' |'space-between' }>`
   display: flex;
   width: 100%;
   justify-content:${props => props.justify || 'center'};
-  border-radius: 5px 5px 0px 0px;
+  border-radius: 20px 20px 0px 0px;
   background:#6b0d7d;
   padding-left:10px;
   box-sizing: border-box;
   /* flex-wrap: wrap; */
-  
 `;

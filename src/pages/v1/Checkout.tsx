@@ -1,6 +1,6 @@
 import {useRef, useState} from "react";
 import styled from "styled-components";
-import { Col, Img, Row,SegoeP,Container,Box,WrappedRow } from "../../style";
+import { Col, Img, SegoeP, Container, Box, WrappedRow } from "../../style";
 import { slimmyGummyLogo ,caIcon} from "../../constants/images";
 import { Footer } from "../../components/layout/Footer";
 import { useDeviceType } from "../../context/DeviceContext";
@@ -19,10 +19,9 @@ export const CheckoutPage = () => {
   const {isMobile} = useDeviceType()
   return (<>
     <HeaderComponent/>
-    <Section $backgroundColor1="#f7ffd3" $backgroundColor2="#fff">
+    <Section $backgroundColor1="#fff" $backgroundColor2="#fff">
       <Container $maxWidth="950px" padding="0" $gap="15px">
-      
-      <Col $maxWidth={isMobile?"100%":"65%"}>
+        <Col $maxWidth={isMobile?"100%":"65%"}>
           <Box $noBorder={true}>
             <WrappedRow justify="space-between" className="wr" $gap="0">
               <Col $maxWidth={isMobile?"100%":"30%"}>
@@ -41,7 +40,7 @@ export const CheckoutPage = () => {
         </Col>
       </Container>
 
-      <Container $alignItems="start" $maxWidth="950px" padding="0" $gap="15px">
+      <Container $alignItems="start" $maxWidth="1024px" padding="0" $gap="15px">
         <Col $maxWidth={isMobile?"100%":"68%"} gap="10px" margin="0px 0px 20px 0px">
           <NavBox/>
           <Offers currentIndex={selected} onSelect={onSelect}/>
