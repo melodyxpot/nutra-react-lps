@@ -14,8 +14,9 @@ interface BottlesGroupingProps {
 
 export const Bottles = ({qty,free}:BottlesGroupingProps) =>{
   const {isMobile} = useDeviceType()
-  const width = isMobile ?28:70
+  const width = isMobile ? 50 : 70;
   const height = width*1.8
+  
   return (
     <Container>
       <Col>

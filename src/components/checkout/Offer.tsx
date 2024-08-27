@@ -50,10 +50,10 @@ export const Offer = ({campaignProduct,currency,index,currentIndex,onSelect}:Off
   const retailPrice = (campaignProduct.price/paid).toFixed(2)
     
   return (
-    <OfferBox $background="#fff" onClick={clicked} style={{ cursor: "pointer" }}>
+    <OfferBox $background="#fff" onClick={clicked} style={{ cursor: "pointer", padding: "10px" }}>
       <Row justify="flex-start">
         <Head>
-          <Col $maxWidth="50%" align="start" margin="8px 0px">
+          <Col $maxWidth={isMobile ? "40%" : "50%"} align="start" margin="8px 0px">
             <SegoeP $lineHeight="16px" color="#2956c2" $fontSize={isMobile?"12px":"27px"} weight={700}>BUY {paid} GET {free} FREE*</SegoeP></Col>
           <Col  $maxWidth="28%" align="start">
             <SegoeP $lineHeight="16px" color="#000000" margin="0px" $fontSize="12px" weight={700}>Retail:</SegoeP>
@@ -75,17 +75,17 @@ export const Offer = ({campaignProduct,currency,index,currentIndex,onSelect}:Off
       {
         isMobile && 
         <Row justify="space-between"  padding="0px 5px" background="transparent">
-          <Col align="start" $maxWidth="22px" margin="5px">
+          {/* <Col align="start" $maxWidth="22px" margin="5px">
             <BlueCircle $isMobile={isMobile}>
               {
                 isSelected && 
                 <ImgV src={Vicon} width={"22px"} height={"22px"}/>
               }
             </BlueCircle>
-          </Col>
-          <RightCol>
+          </Col> */}
+          <Col>
             <SegoeP $lineHeight="16px" margin="0" color="#2956c2" weight={700} $fontSize="12px">For Those Who Need to Lose {qty*5}+ Pounds!</SegoeP>
-          </RightCol>
+          </Col>
         </Row>
       }
       <Row justify="space-between" gap="10px"  padding="0px 5px" background="transparent" style={{ padding: "20px 0 20px 0" }}>
@@ -106,15 +106,17 @@ export const Offer = ({campaignProduct,currency,index,currentIndex,onSelect}:Off
             }
             
     
-            <Col justify="center" $maxWidth="60%">
+            <Col justify="center" $maxWidth={isMobile ? "100%" : "60%"}>
               <Bottles qty={paid} free={free}/>
             </Col>        
 
-            <Col justify="center" $maxWidth="20%">
-              <Save size={isMobile?50:78}>
-                <SegoeP $lineHeight="16px" $fontSize={isMobile?"14px":"16px"} direction="center" weight={700}>{free?`GET ${free} FREE`:''}</SegoeP>
-              </Save>
-            </Col>
+            {!isMobile &&
+              <Col justify="center" $maxWidth="20%">
+                <Save size={isMobile?50:78}>
+                  <SegoeP $lineHeight="16px" $fontSize={isMobile?"14px":"16px"} direction="center" weight={700}>{free?`GET ${free} FREE`:''}</SegoeP>
+                </Save>
+              </Col>
+            }
 
           </Row>
         </Col>
@@ -126,14 +128,16 @@ export const Offer = ({campaignProduct,currency,index,currentIndex,onSelect}:Off
           
           <SegoeP $lineHeight="16px" margin="0" $fontSize="14px">Same as</SegoeP>
           <SegoeP $lineHeight="16px" margin="0" $fontSize={isMobile? "18px":"40px"} style={{ fontWeight: "bold", color: isSelected? "#3dc051" : "#1c1c28" }}>{currency}{bottlePrice}<Small>/Bottle</Small></SegoeP>
+            
         </RightCol>
+
       </Row>
       {
         isMobile && 
-        <Row  padding="5px 5px">
-          <SelectBtn $backgroundColor1="#fc6806" width="100%" $fontSize={17} $fontWeight={400} onClick={clicked}>{isSelected?"Selected!":selectText}</SelectBtn>
+        <Row style={{marginBottom: "10px"}}>
+          <SelectBtn $backgroundColor1="#fc6806" $fontSize={17} $fontWeight={400} width="80%" onClick={clicked}>{isSelected?"Selected!":selectText}</SelectBtn>
         </Row>
-      }
+        }
     </OfferBox>
   )
 }
@@ -267,5 +271,12 @@ const RightCol = styled(Col)`
     position: absolute;
     top: 0;
     width: 2px;
+  }
+
+  @media (max-width: 768px) {
+    &::before {
+      left: -13px;
+      height: 100%;
+    }
   }
 `
