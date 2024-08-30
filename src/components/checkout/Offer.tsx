@@ -6,6 +6,10 @@ import { useEffect, useState } from "react";
 import { useDeviceType } from "../../context/DeviceContext";
 import LimitedOfferImage from "../../assets/images/limited-offer.svg";
 import ReviewImage from "../../assets/images/review.svg";
+import BestSellerImage from "../../assets/images/bestseller.svg";
+import ProsLowImage from "../../assets/images/pros-low.svg";
+import ProsMiddleImage from "../../assets/images/pros-middle.svg";
+import ProsMaxImage from "../../assets/images/pros-max.svg";
 
 interface OfferProps {
   campaignProduct:CampaignProduct;
@@ -16,7 +20,7 @@ interface OfferProps {
 }
 export const Offer = ({campaignProduct,currency,index,currentIndex,onSelect}:OfferProps)=>{
   const {isMobile} = useDeviceType()
-  const selectText = isMobile?"Select this package >>":"Yes - Choose this"
+  const selectText = isMobile? "SELECT THIS PACKAGE! >>" : "Yes - Choose this";
 
   const [isSelected,setIsselected] = useState(currentIndex===index)
   const clicked = ()=>{
@@ -34,7 +38,7 @@ export const Offer = ({campaignProduct,currency,index,currentIndex,onSelect}:Off
   }, [currentIndex]);
 
   const qty = campaignProduct.productQty
-  let free = 0
+  let free = 0;
 
   switch (qty){
     case 1:
@@ -57,91 +61,108 @@ export const Offer = ({campaignProduct,currency,index,currentIndex,onSelect}:Off
   const save = index === 0 ? 45 : index === 1 ? 30 : 0;
   let bottles = 3 - index;
 
-  console.log('qty', qty, isMobile)
-
   return (
     <OfferBox $background="#fff" onClick={clicked} style={{ cursor: "pointer", position: "relative" }}>
       {(qty === 5 && !isMobile) && <LimitedOfferImg src={LimitedOfferImage} alt="" width="76" height="76" />}
       <Row justify="space-between">
         <Head justify="space-between">
-          <Col $maxWidth={isMobile ? "40%" : "75%"} align="start" margin="8px 0px" justify="center">
-            <SegoeP  $lineHeight="16px" color={isSelected ? "#1c1c28" : ""} $fontSize={isMobile?"18px":"15px"} direction="center" weight={900} style={{width: "100%"}}>
-              <span style={{ color: isSelected ? "#2956c2" : "#676873", fontWeight: "700"}}>SAVE A WHOLE {save}%</span> 
-              {" "}WITH {bottles} BOTTLES PACK
+          <Col $maxWidth={isMobile ? "60%" : "75%"} align={isMobile ? "start" : "end"} margin={isMobile ? "0" : "5px"} justify={isMobile ? "flex-start" : "flex-end"}>
+            <SegoeP 
+              $lineHeight="16px" 
+              color={isSelected ? "#1c1c28" : ""} 
+              $fontSize={isMobile ? "18px": "18px" } 
+              direction={isMobile ? "start" : "end"} 
+              weight={900} 
+              style={{ 
+                width: "100%", 
+                display: "flex", 
+                flexDirection: isMobile ? "column" : "row",
+                justifyContent: isMobile ? "flex-start" : "center"
+              }}
+            >
+              <BlockTitleP $isSelected={isSelected}>SAVE A WHOLE {save}%</BlockTitleP> 
+              <BlockTitleP>{" "}WITH {bottles} BOTTLES PACK</BlockTitleP>
             </SegoeP>
           </Col>
           <Col $maxWidth="25%" background={isSelected ? "#2956c2" : "#676873"} style={{ borderRadius: "0 8px 0 0", position: 'relative' }}>
           <FlexContainer $isSelected={isSelected} />
             <Row background={isSelected ? "#2956c2" : "#676873"} justify="flex-start" gap={"10px"}>
               <Col align="start"  >
-                <SegoeP $lineHeight="16px" color="#fff" $fontSize="18px" weight={400} style={{ fontStyle: isSelected ? "italic" : "normal", fontWeight: "bold" }} >
+                <BlockTitleP2 $lineHeight="16px" color="#fff" $fontSize="18px" weight={400} style={{ fontStyle: isSelected ? "italic" : "normal", fontWeight: "bold" }} >
                   {supply}-DAY SUPPLY
-                </SegoeP>
+                </BlockTitleP2>
               </Col>
             </Row>
           </Col>
         </Head>
       </Row>
-      {
-        isMobile && 
-        <Row justify="space-between"  padding="0px 5px" background="transparent">
-          <Col>
-            <SegoeP $lineHeight="16px" margin="0" color="#2956c2" weight={700} $fontSize="12px">For Those Who Need to Lose {qty*5}+ Pounds!</SegoeP>
-          </Col>
-        </Row>
-      }
       <Row justify="space-between" gap="10px"  padding="0px 5px" background="white" style={{ padding: "20px 15px 20px 15px", zIndex: 2 }}>
-        
-        <Col $maxWidth="70%" justify="center">
+        <Col $maxWidth={isMobile ? "60%" : "70%"} justify="center">
           <Row className="rowd" justify="flex-start" gap="15px">
             {
               !isMobile &&
-              <Col justify="center" $maxWidth="20%">
-            <BlueCircle onClick={clicked} $isMobile={isMobile}>
-              {
-                isSelected && 
-                <ImgV src={Vicon} width={isMobile?"22px":"58px"} height={isMobile?"22px":"58px"}/>
-              }
-              
-            </BlueCircle>
-            </Col>
+              <Col justify="center" $maxWidth="50px">
+                <BlueCircle onClick={clicked} $isMobile={isMobile}>
+                  {
+                    isSelected && 
+                    <ImgV src={Vicon} width={isMobile?"22px":"58px"} height={isMobile?"22px":"58px"}/>
+                  }
+                  
+                </BlueCircle>
+              </Col>
             }
             
     
-            <Col justify="center" $maxWidth={isMobile ? "100%" : "60%"}>
+            <Col justify="center" $maxWidth={isMobile ? "100%" : "50%"}>
               <Bottles qty={paid} free={free}/>
             </Col>        
 
             {!isMobile &&
-              <Col justify="center" $maxWidth="20%">
-                <Save size={isMobile?50:78}>
-                  <SegoeP $lineHeight="16px" $fontSize={isMobile?"14px":"16px"} direction="center" weight={700}>{free?`GET ${free} FREE`:''}</SegoeP>
-                </Save>
+              <Col justify="center" $maxWidth="50%" gap="5px">
+                {/* <SegoeP $lineHeight="16px" $fontSize={isMobile?"14px":"16px"} direction="center" weight={700}>{free?`GET ${free} FREE`:''}</SegoeP> */}
+                <img src={index === 0 ? ProsMaxImage : index === 1 ? ProsMiddleImage : ProsLowImage} alt="" />
+                <SegoeP $lineHeight="14px" $fontSize={isMobile? "16px" : "16px"} direction="center" weight={700}>
+                  {index === 0 ? "Max Efficiency" : index === 1 ? "For Beginners" : "Starter"}
+                </SegoeP>
+                {(index === 0 && !isMobile) && <img src={BestSellerImage} alt="" style={{ width: "95%"}} />}
               </Col>
             }
 
           </Row>
         </Col>
         
-        <RightCol $maxWidth="30%" justify="center" gap="20px" margin="10px 5px">
-          {/* {!isMobile &&
-            <SegoeP $lineHeight="16px" margin="0" color="#2956c2" weight={700} $fontSize="16px">For Those Who Need to Lose {qty*5}+ Pounds!</SegoeP>
-          }
-           */}
-          {/* <SegoeP $lineHeight="16px" margin="0" $fontSize="14px">Same as</SegoeP> */}
-          <SegoeP $lineHeight="16px" margin="0" $fontSize="18px" weight={700} color={"#1c1c28"} style={{textAlign: 'center'}}>Price per piece:</SegoeP>
-          <SegoeP $lineHeight="16px" margin="0" $fontSize={isMobile? "40px":"40px"} style={{ fontWeight: "bold", color: isSelected? "#3dc051" : "#1c1c28" }}>{currency}{bottlePrice}<Small></Small></SegoeP>
-            
+        <RightCol $maxWidth={isMobile ? "40%" : "30%"} justify="center" gap="10px" margin="10px 5px">
+          <SegoeP 
+            $fontSize={isMobile ? "17px" : "15px"} 
+            weight={700} 
+            color={"#ffffff"} 
+            style={{
+              textAlign: 'center', 
+              backgroundColor: "#fd4f4f",
+              padding: "3px 5px",
+              borderRadius: "3px",
+              margin: "0"
+            }}
+          >
+            SAVE: ${save}
+          </SegoeP>
+          <SegoeP $lineHeight="16px" margin="0" $fontSize="17px" weight={700} color={"#1c1c28"} style={{textAlign: 'center', padding: "3px", paddingBottom: "5px"}}>Price per piece:</SegoeP>
+          <CurrencyP $lineHeight="16px" margin="0" $fontSize={isMobile? "40px":"40px"} style={{ fontWeight: "bold", color: isSelected? "#3dc051" : "#1c1c28" }}>
+            {currency}{bottlePrice}
+            <Small></Small>
+          </CurrencyP>
+          {(index === 0 && isMobile) && <img src={BestSellerImage} alt="" style={{ width: "95%"}} />}
         </RightCol>
 
       </Row>
       {
         isMobile && 
         <Row style={{ flexDirection: "column", marginBottom: "10px", alignItems: "center" }}>
-          <SelectBtn $backgroundColor1="#36ae48" $fontSize={17} $fontWeight={400} width="80%" onClick={clicked}>
-            {isSelected ? "Selected!": selectText}
+          <SelectBtn $backgroundColor1="#46bd58" $fontSize={20} $fontWeight={700} width="97%" onClick={clicked}>
+            {isSelected ? "SELECTED!": selectText}
+            <SegoeP $fontSize="13px" direction="center" style={{ color: "#fff", margin: "0"}}>60-Day Satisfaction Guarantee</SegoeP>
           </SelectBtn>
-          {isMobile && <img src={ReviewImage} style={{width: "80%", marginTop: "10px"}} alt="" />}
+          {isMobile && <img src={ReviewImage} style={{width: "70%", marginTop: "10px"}} alt="" />}
         </Row>
         }
     </OfferBox>
@@ -168,7 +189,7 @@ z-index: 5;
 const SelectBtn = styled.a<{$backgroundColor1: string, $backgroundColor2?: string,color?:string,width?:string,$fontSize?:number,$fontWeight?:number}>`
   background: linear-gradient(to bottom, ${props=>props.$backgroundColor1}, ${props=>props.$backgroundColor2 || props.$backgroundColor1});
   width: ${props=>props.width || 'auto'};
-  padding: 5px 15px;
+  padding: 3px 15px;
   box-sizing: border-box;
   line-height: 25px;
   /* margin:10px; */
@@ -186,7 +207,6 @@ const SelectBtn = styled.a<{$backgroundColor1: string, $backgroundColor2?: strin
   &:hover {
     color: #253b88;
     text-decoration: underline
-
   }
 `;
 
@@ -313,3 +333,25 @@ const LimitedOfferImg = styled.img`
   height: auto;
   z-index: 5;
 `;
+
+const BlockTitleP = styled.p<{ $isSelected?: boolean }>`
+  color: ${props => props.$isSelected ? "#2956c2" : "#1c1c28"};
+  font-weight: 700;
+  margin: 0;
+
+  @media (max-width: 320px) {
+    font-size: 15px;
+  }
+`;
+
+const BlockTitleP2 = styled(SegoeP)`
+  @media (max-width: 320px) {
+    font-size: 15px;
+  }
+`
+
+const CurrencyP = styled(SegoeP)`
+  @media (max-width: 320px) {
+    font-size: 30px;
+  }
+`

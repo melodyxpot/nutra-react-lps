@@ -20,29 +20,15 @@ export const Bottles = ({qty,free}:BottlesGroupingProps) =>{
   return (
     <Container>
       <Col>
-      <ImageStackContainer count={qty>1?2:1} width={width} height={height}>
-      <Image width={width} height={height} src={bottleImage} />
-      {qty>1 && 
-      <Image width={width} height={height} src={bottleImage} />
-      }
-      {qty>2 && 
-      <Image width={width} height={height} src={bottleImage} />
-      }
-    </ImageStackContainer>
-      </Col>
-      <Col>
-        <Img src={plusIcon} width={isMobile ?"22px":"36px"}/>
-      </Col>
-      <Col>
-      <ImageStackContainer width={width} height={height} count={free>1?2:1}>
-      <Image width={width} height={height} src={bottleImage} />
-      {free>1 && 
-      <Image width={width} height={height} src={bottleImage} />
-      }
-      {free>2 && 
-      <Image  width={width} height={height} src={bottleImage} />
-      }
-    </ImageStackContainer>
+        <ImageStackContainer count={qty>1?2:1} width={width} height={height}>
+          <Image width={width} height={height} src={bottleImage} />
+          {qty>1 && 
+          <Image width={width} height={height} src={bottleImage} />
+          }
+          {qty>2 && 
+          <Image width={width} height={height} src={bottleImage} />
+          }
+        </ImageStackContainer>
       </Col>
     </Container>
   );
@@ -50,7 +36,6 @@ export const Bottles = ({qty,free}:BottlesGroupingProps) =>{
 
 const Container = styled.div`
   display: flex;
-  width: 100%;
   gap: 0px; /* Adjust the gap between the two sets of images */
 `;
 

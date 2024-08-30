@@ -4,6 +4,7 @@ import styled from "styled-components"
 import ArrowActiveImg from "../../assets/images/arrow-active.png";
 import ArrowRightImg from "../../assets/images/arrow-right.png";
 import ArrowBottomImg from "../../assets/images/arrow-bottom.png";
+import { useDeviceType } from "../../context/DeviceContext";
 
 const date = new Date().toDateString()
 
@@ -12,13 +13,15 @@ interface Props {
 }
 
 export const NavBox = ({ active = 2 }: Props)=>{
-    const [activeTab, setActiveTab] = useState<number>(2);
+  const [activeTab, setActiveTab] = useState<number>(2);
+  const {isMobile} = useDeviceType()
 
-    useEffect(() => {
-      setActiveTab(active)
-    }, [active])
+  useEffect(() => {
+    setActiveTab(active)
+  }, [active])
 
-    return (
+  return (
+      <>
         <Box $background="#fff" gap="0px" style={{ borderRadius: "20px", display: "flex", justifyContent: "center", padding: "10px" }}>
           <TabHeaders style={{ maxWidth: "400px", margin: "auto", marginBottom: "20px" }}>
             <TabHeader
@@ -32,8 +35,8 @@ export const NavBox = ({ active = 2 }: Props)=>{
               key={2}
               $isActive={activeTab === 2}
             >
-             Select Package
-             <span>{active === 2 ? "" : "2"}</span>
+              Select Package
+              <span>{active === 2 ? "" : "2"}</span>
             </TabHeader>
             <TabHeader
               key={3}
@@ -63,8 +66,10 @@ export const NavBox = ({ active = 2 }: Props)=>{
             }
             <SegoeP margin="3px 0px" $fontSize="14px" $lineHeight="16px">Sell Out Risk: <Color color="#fc0303">HIGH</Color></SegoeP>
           </>}
-          <SegoeP margin="3px 10px" $fontSize="18px" $lineHeight="16px" direction="center" weight={700}>SELECT YOUR PACKAGE BELOW</SegoeP>
+          {!isMobile && <SegoeP margin="3px 10px" $fontSize="18px" $lineHeight="16px" direction="center" weight={700}>SELECT YOUR PACKAGE BELOW</SegoeP>}
         </Box>
+        {isMobile && <SegoeP margin="3px 10px" $fontSize="18px" $lineHeight="16px" direction="center" weight={700}>SELECT YOUR PACKAGE BELOW</SegoeP>}
+      </>
     )
 }
 
