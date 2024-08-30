@@ -63,6 +63,7 @@ export const NavBox = ({ active = 2 }: Props)=>{
             }
             <SegoeP margin="3px 0px" $fontSize="14px" $lineHeight="16px">Sell Out Risk: <Color color="#fc0303">HIGH</Color></SegoeP>
           </>}
+          <SegoeP margin="3px 10px" $fontSize="18px" $lineHeight="16px" direction="center" weight={700}>SELECT YOUR PACKAGE BELOW</SegoeP>
         </Box>
     )
 }

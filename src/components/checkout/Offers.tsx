@@ -4,8 +4,6 @@ import styled from "styled-components"
 import { Offer } from "./Offer";
 import { guarantee, SecureIcons } from "../../constants/images";
 import { useCampaign } from "../../context/CampaignContext";
-import { useOrder } from "../../context/OrderContext";
-import { useState } from "react";
 import { useDeviceType } from "../../context/DeviceContext";
 
 

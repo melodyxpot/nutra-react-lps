@@ -7,6 +7,7 @@ import { useDeviceType } from "../../context/DeviceContext";
 import { Notification } from "../../components/generic/Notification";
 
 import { NavBox,PaymentForm,Offers,HeaderComponent } from "../../components/checkout";
+import { StatusBar } from "../../components/checkout/StatusBar";
 
 export const CheckoutPage = () => {
   const [selected,setSelected] = useState<number>(0)
@@ -43,6 +44,7 @@ export const CheckoutPage = () => {
       <Container $alignItems="start" $maxWidth="1024px" padding="0" $gap="15px">
         <Col $maxWidth={isMobile?"100%":"68%"} gap="10px" margin="0px 0px 20px 0px">
           <NavBox/>
+          {!isMobile && <StatusBar />}
           <Offers currentIndex={selected} onSelect={onSelect}/>
         </Col>
         <Col $maxWidth={isMobile?"100%":"30%"}>
