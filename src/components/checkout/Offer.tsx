@@ -10,6 +10,7 @@ import BestSellerImage from "../../assets/images/bestseller.svg";
 import ProsLowImage from "../../assets/images/pros-low.svg";
 import ProsMiddleImage from "../../assets/images/pros-middle.svg";
 import ProsMaxImage from "../../assets/images/pros-max.svg";
+import EffectCollection from "./EffectCollection";
 
 interface OfferProps {
   campaignProduct:CampaignProduct;
@@ -127,8 +128,10 @@ export const Offer = ({campaignProduct,currency,index,currentIndex,onSelect}:Off
                 {(index === 0 && !isMobile) && <img src={BestSellerImage} alt="" style={{ width: "95%"}} />}
               </Col>
             }
-
           </Row>
+          {
+            isMobile && <EffectCollection index={index} />
+          }
         </Col>
         
         <RightCol $maxWidth={isMobile ? "40%" : "30%"} justify="center" gap="10px" margin="10px 5px">
